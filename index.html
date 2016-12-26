@@ -70,11 +70,11 @@ This project is it's JavaScript implementation, for both Node.js and browsers.</
 
           function renderErr(root, e){
             root.innerHTML = '<h3>' + e.message + '</h3>' + 
-                  '<pre><code>' + escape(e.stack) + '</code></pre>';
+                  '<pre>' + escape(e.stack) + '</pre>';
           }
 
           function escape(html){
-            return html.replace('<', '&lt;').replace('>', '&gt;');
+            return html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
           }
       </script>
     
