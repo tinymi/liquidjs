@@ -1,0 +1,23 @@
+{
+  "name": "liquidjs-www",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 8822"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harttle/liquidjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harttle/liquidjs/issues"
+  },
+  "homepage": "https://github.com/harttle/liquidjs#readme"
+}
