@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>LiquidJS by harttle</title>
+    <title>LiquidJS - Liquid template engine for Node.js and browsers.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,30 +12,71 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">LiquidJS</h1>
-      <h2 class="project-tagline">Liquid template engine for Node.js and browser javascript.</h2>
+      <h2 class="project-tagline">Liquid template engine for Node.js and browsers.</h2>
       <a href="https://github.com/harttle/liquidjs" class="btn">View on GitHub</a>
-      <a href="https://github.com/harttle/liquidjs/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/harttle/liquidjs/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://unpkg.com/liquidjs/dist/liquid.min.js" class="btn">for Production</a>
+      <a href="https://unpkg.com/liquidjs/dist/liquid.js" class="btn">for Development</a>
     </section>
 
     <section class="main-content">
-      <div id="result"></div>
 
-      <h3>Live Template:</h3>
-      <div id="editor" style="height:240px;">{% assign name="LiquidJS" %}
-{% assign home="https://github.com/harttle/liquidjs" %}
+      <h3>Features</h3>
+      <ul>
+        <li>Support both Node.js and browsers. Here's a demo: <a href="https://jsfiddle.net/6u40xbzs/">https://jsfiddle.net/6u40xbzs/</a> </li>
+        <li>Fully compatible to <a href="https://shopify.github.io/liquid/">shopify</a>, with all <a href="https://github.com/harttle/liquidjs/wiki/Builtin-Tags">tags</a> and <a href="https://github.com/harttle/liquidjs/wiki/Builtin-Filters">filters</a> implemented</li>
+        <li>In pure JavaScript with <a href="https://github.com/kevinbeaty/any-promise">any-promise</a> as the only one dependency</li>
+      </ul>
 
-<h3>{{ "welcome to " | append: name | capitalize }}</h3>
+      <h3>Installation</h3>
+      <li>Node.js
+        <pre><code>npm install --save liquidjs</code></pre>
+      </li>
+      <li>Browser (production)
+        <pre><code>&lt;script src="//unpkg.com/liquidjs/dist/liquid.min.js"&gt;&lt;/script&gt;</code></pre>
+      </li>
+      <li>Browser (development)
+        <pre><code>&lt;script src="//unpkg.com/liquidjs/dist/liquid.js"&gt;&lt;/script&gt;</code></pre>
+      </li>
 
-<p>Liquid is originaly implemented in Ruby 
-(known as <a href="https://shopify.github.io/liquid/">shopify liquid</a>).
-This project is it's JavaScript implementation, for both Node.js and browsers.</p>
+      <h3>Node.js Demo</h3>
+      <pre><code>var Liquid = require('liquidjs');
+var engine = Liquid();
 
-<blockquote>You can find a full list of builtin
-  <a href="{{'/wiki/Builtin-Tags' | prepend: home}}">Tags</a> and 
-  <a href="{{'/wiki/Builtin-Filters' | prepend: home}}">Filters</a> in the 
-  <a href="{{'/wiki' | prepend: home}}">wiki</a>.
-</blockquote></div>
+engine
+    .parseAndRender('{{name | capitalize}}', {name: 'alice'})
+    .then(console.log);
+
+// outputs 'Alice'</code></pre>
+
+      <h3>Browser Demo</h3>
+      <p>Here's a JSFiddle: <a href="https://jsfiddle.net/6u40xbzs/1/">https://jsfiddle.net/6u40xbzs/1/</a><p>
+      <script async src="//jsfiddle.net/6u40xbzs/embed/js,html,result/dark/"></script>
+
+      <h3>Debugging</h3>
+      <p>Syntax error will be located in <code>error.message</code>:</p>
+      <pre><code>   3| {% assign contributors="harttle,chenos,thardy,..." | split: "," %}
+   4| &lt;ul&gt;
+&gt;&gt; 5| {% for person in contributors %}
+   6| &lt;li&gt;{{ person }}&lt;/li&gt;
+   8| &lt;/ul&gt;
+ParseError: tag {% for person in contributors %} not closed, line:5
+    at parseToken (https://unpkg.com/liquidjs@2.1.2/dist/liquid.js:791:13)
+    at Object.parse (https://unpkg.com/liquidjs@2.1.2/dist/liquid.js:772:22)
+    at Object.parse (https://unpkg.com/liquidjs@2.1.2/dist/liquid.js:258:24)
+    at https://unpkg.com/liquidjs@2.1.2/dist/liquid.js:269:20
+    at &lt;anonymous&gt;</code></pre>
+      <blockquote>See this JSFiddle:
+        <a href="https://jsfiddle.net/d86qj6yb/6/">https://jsfiddle.net/d86qj6yb/6/</a>
+      </blockquote>
+
+      <h3>API Reference</h3>
+      <p>Refer to <a href="https://github.com/harttle/liquidjs">README.md</a> for detailed usage and options. See wiki for API references:</li>
+      <ul>
+        <li>Builtin Tags: <a href="https://github.com/harttle/liquidjs/wiki/Builtin-Tags">https://github.com/harttle/liquidjs/wiki/Builtin-Tags</a></li>
+        <li>Builtin Filters: <a href="https://github.com/harttle/liquidjs/wiki/Builtin-Filters">https://github.com/harttle/liquidjs/wiki/Builtin-Filters</a></li>
+        <li>Operators: <a href="https://github.com/harttle/liquidjs/wiki/Operators">https://github.com/harttle/liquidjs/wiki/Operators</a></li>
+        <li>Whitespace Control: <a href="https://github.com/harttle/liquidjs/wiki/Whitespace-Control">https://github.com/harttle/liquidjs/wiki/Whitespace-Control</a></li>
+      </ul>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/harttle/liquidjs">LiquidJS</a> is maintained by <a href="https://github.com/harttle">harttle</a>.</span>
@@ -44,40 +85,6 @@ This project is it's JavaScript implementation, for both Node.js and browsers.</
 
       <script src="https://unpkg.com/liquidjs@latest/dist/liquid.min.js"></script>
       <script src="//cdn.bootcss.com/ace/1.2.5/ace.js"></script>
-
-      <script>
-          var liquid = Liquid();
-
-          var resultEl = document.getElementById('result');
-          var editorEl = document.getElementById("editor");
-          var src = editorEl.innerHTML;
-
-          var editor = ace.edit("editor");
-          editor.setTheme("ace/theme/monokai");
-          editor.getSession().setMode("ace/mode/liquid");
-          editor.on('change', function(){
-            src = editor.getSession().getValue();
-            liquid.parseAndRender(src)
-              .then(function(html) {
-                resultEl.innerHTML = html;
-              })
-              .catch(function(e){
-                renderErr(resultEl, e);
-                throw e;
-              });
-          });
-          editor.session.setValue(src);
-
-          function renderErr(root, e){
-            root.innerHTML = '<h3>' + e.message + '</h3>' + 
-                  '<pre>' + escape(e.stack) + '</pre>';
-          }
-
-          function escape(html){
-            return html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-          }
-      </script>
-    
     </section>
   </body>
 </html>
