@@ -1,6 +1,7 @@
 {
   "name": "shopify-liquid",
-  "version": "1.9.0",
+  "version": "1.9.1",
+  "deprecated": "this package has been renamed to liquidjs: https://www.npmjs.com/package/liquidjs , use that instead",
   "description": "A feature-rich Liquid template engine for Node.js and browsers, with compliance with the Ruby version.",
   "main": "index.js",
   "scripts": {
