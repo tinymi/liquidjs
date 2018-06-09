@@ -116,7 +116,7 @@ var Scope = {
     return seq
 
     function push () {
-      if (name.length) seq.push(name)
+      if (name && name.length) seq.push(name)
       name = ''
     }
   }
