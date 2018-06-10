@@ -1,7 +1,7 @@
 module.exports = function (isTruthy) {
   return {
-    '==': (l, r) => l === r,
-    '!=': (l, r) => l !== r,
+    '==': (l, r) => JSON.stringify(l) === JSON.stringify(r),
+    '!=': (l, r) => JSON.stringify(l) !== JSON.stringify(r),
     '>': (l, r) => l !== null && r !== null && l > r,
     '<': (l, r) => l !== null && r !== null && l < r,
     '>=': (l, r) => l !== null && r !== null && l >= r,
