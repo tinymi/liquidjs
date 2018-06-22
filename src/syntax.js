@@ -33,6 +33,8 @@ function evalExp (exp, scope) {
 function evalValue (str, scope) {
   str = str && str.trim()
   if (!str) return undefined
+  if (str.indexOf('?') == str.length - 1)
+    str = str.substring(0, str.length - 1)
 
   if (lexical.isLiteral(str)) {
     return lexical.parseLiteral(str)

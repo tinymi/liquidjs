@@ -98,10 +98,12 @@ var filters = {
 }
 
 function escape (str) {
+  if (!str) return ''
   return stringify(str).replace(/&|<|>|"|'/g, m => escapeMap[m])
 }
 
 function unescape (str) {
+  if (!str) return ''
   return stringify(str).replace(/&(amp|lt|gt|#34|#39);/g, m => unescapeMap[m])
 }
 
