@@ -34,7 +34,7 @@ var filters = {
   },
   'default': (v, arg) => isTruthy(v) ? v : arg,
   'divided_by': (v, arg) => v / arg,
-  'downcase': v => v.toLowerCase(),
+  'downcase': v => stringify(v).toLowerCase(),
   'escape': escape,
 
   'escape_once': str => escape(unescape(str)),
