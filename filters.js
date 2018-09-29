@@ -40,7 +40,7 @@ var filters = {
   'escape_once': str => escape(unescape(str)),
   'first': v => v[0],
   'floor': v => Math.floor(v),
-  'join': (v, arg) => v.join(arg),
+  'join': (v, arg) => v && v.join && v.join(arg) || '',
   'last': v => v[v.length - 1],
   'lstrip': v => stringify(v).replace(/^\s+/, ''),
   'map': (arr, arg) => arr.map(v => v[arg]),
